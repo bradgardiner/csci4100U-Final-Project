@@ -4,4 +4,8 @@
     <string name="title_activity_search">Search</string>
     <string name="location">Location:</string>
     <string name="search">Search</string>
+    <string name="name">Name:</string>
+    <string name="price">Price:</string>
+    <string name="desc">Description:</string>
+    <string name="names">Name:</string>
 </resources>
