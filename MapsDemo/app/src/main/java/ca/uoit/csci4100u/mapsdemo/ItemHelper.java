@@ -34,13 +34,13 @@ public class ItemHelper extends SQLiteOpenHelper{
             "\tVALUES (\"Speciialty Tea\", 1.99, \"Specialty Teas\"),\n" +
             "\tVALUES(\"Hot Breakfast Sandwich\", 2.99, \"Hot Breakfast Sandwich\"),\n" +
             "\tVALUES(\"Bagel B.E.L.T\", 3.99, \"BELT\"),\n" +
-            "\tVALUES(\"HashBrown\", 1.99, \"Hashed Browns\"),\n" +
-            "\tVALUES(\"Grilled Panini\", 3.99, \"The Panini Has Been Grilled\"),\n" +
-            "\tVALUES(\"Crispy Chicken\", 3,99, \"Chripsy The Chicken\"),\n" +
-            "\tVALUES(\"Soup\", 2.99, \"Chicken Soup for the Heart\"),\n" +
-            "\tVALUES(\"Chili\", 1.99 , \"Hi Welcome to Chillies!\"),\n" +
-            "\tVALUES(\"Muffins\", 1.25, \"Press the Button\"),\n" +
-            "\tVALUES(\"Donuts\", 0.99, \"Do\")\n" +
+            "\tVALUES(\"HashBrown\", 1.99, \"HashBrown\"),\n" +
+            "\tVALUES(\"Grilled Panini\", 3.99, \"Grilled Panini\"),\n" +
+            "\tVALUES(\"Crispy Chicken\", 3,99, \"Chrispy Chicken\"),\n" +
+            "\tVALUES(\"Soup\", 2.99, \"Soup\"),\n" +
+            "\tVALUES(\"Chili\", 1.99 , \"Chilli\"),\n" +
+            "\tVALUES(\"Muffins\", 1.25, \"Muffins\"),\n" +
+            "\tVALUES(\"Donuts\", 0.99, \"Donuts\")\n" +
             ");";
 
     static final String MuffinCreate = "CREATE TABLE Muffins(\n" +

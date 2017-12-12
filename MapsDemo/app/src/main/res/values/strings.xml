@@ -8,4 +8,10 @@
     <string name="price">Price:</string>
     <string name="desc">Description:</string>
     <string name="names">Name:</string>
+    <string name="user_name">User Name</string>
+    <string name="password">password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email_hint">something@email.com</string>
+    <string name="confirm_password">confirm password</string>
 </resources>
