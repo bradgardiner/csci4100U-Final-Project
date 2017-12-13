@@ -26,24 +26,29 @@ public class ItemHelper extends SQLiteOpenHelper{
 
     static final String ItemCreate = "CREATE TABLE menuItems(\n" +
             "\tname TEXT PRIMARY KEY,\n" +
-            "\tprice TEXT NOT NULL,\n" +
+            "\tprice REAL NOT NULL,\n" +
             "\tdesc TEXT NOT NULL \n" +
             ");";
-    static final String ItemsItems = "INSERT INTO menuItems(\n" +
-            "\tVALUES (\"Coffee\", 1.99, \"Tim Hortons Original Blend Coffee: Small, Medium, and Large\"),\n" +
-            "\tVALUES (\"Dark Roast Coffee\", 1.99, \"Tim Hortons Dark Roast Coffee: Small, Medium, and Large\"),\n" +
-            "\tVALUES (\"Decaf Coffee\", 1.99, \"Tim Hortons Decaf Coffee: Small, Medium, and Large\"),\n" +
-            "\tVALUES (\"Specialty Tea\", 1.99, \"Specialty Teas\"),\n" +
-            "\tVALUES(\"Hot Breakfast Sandwich\", 2.99, \"Hot Breakfast Sandwich\"),\n" +
-            "\tVALUES(\"Bagel B.E.L.T\", 3.99, \"BELT\"),\n" +
-            "\tVALUES(\"HashBrown\", 1.99, \"HashBrown\"),\n" +
-            "\tVALUES(\"Grilled Panini\", 3.99, \"Grilled Panini\"),\n" +
-            "\tVALUES(\"Crispy Chicken\", 3,99, \"Crispy Chicken\"),\n" +
-            "\tVALUES(\"Soup\", 2.99, \"Soup\"),\n" +
-            "\tVALUES(\"Chili\", 1.99 , \"Chili\"),\n" +
-            "\tVALUES(\"Muffins\", 1.25, \"Muffins\"),\n" +
-            "\tVALUES(\"Donuts\", 0.99, \"Donuts\")\n" +
+
+    static final String DonutCreate = "CREATE TABLE Donuts(\n" +
+            "\tname TEXT PRIMARY KEY\n" +
             ");";
+
+    static final String TeaCreate = "CREATE TABLE Tea(\n" +
+            "\tname TEXT PRIMARY KEY\n" +
+            ");";
+
+    static final String MuffinCreate = "CREATE TABLE Muffins(\n" +
+            "\tname Text PRIMARY KEY\n" +
+            ")";
+
+    static final String CookieCreate = "CREATE TABLE Cookies(\n "+
+            "name TEXT PRIMARY KEY\n)";
+
+    static final String BreakFastCreate = "CREATE TABLE Breakfast(\n "+
+            "name TEXT PRIMARY KEY\n)";
+    static final String SandwichCreate= "CREATE TABLE Sandwich(\n "+
+            "name TEXT PRIMARY KEY\n)";
 
 
 
@@ -53,6 +58,12 @@ public class ItemHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(ItemCreate);
+        db.execSQL(DonutCreate);
+        db.execSQL(TeaCreate);
+        db.execSQL(MuffinCreate);
+        db.execSQL(CookieCreate);
+        db.execSQL(BreakFastCreate);
+        db.execSQL(SandwichCreate);
     }
 
     @Override
@@ -95,9 +106,9 @@ public class ItemHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues newVals = new ContentValues();
-        newVals.put("name","Coffee");
-        newVals.put("price","2.4");
-        newVals.put("desc","COFFEE");
+        newVals.put("name",name);
+        newVals.put("price",price);
+        newVals.put("desc",desc);
         long i = db.insert(ItemTable,null,newVals);
 
         return item;
@@ -120,6 +131,16 @@ public class ItemHelper extends SQLiteOpenHelper{
 
     }
 
+public Item createOtherItem(String tableName, String name){
+    Item item = new Item(name,2.4f);
 
+    SQLiteDatabase db = this.getWritableDatabase();
+
+    ContentValues newVals = new ContentValues();
+    newVals.put("name",name);
+    long i = db.insert(tableName,null,newVals);
+
+    return item;
+}
 
 }
