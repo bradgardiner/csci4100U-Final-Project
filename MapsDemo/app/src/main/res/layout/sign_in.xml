@@ -30,12 +30,13 @@
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in" />
+        android:text="@string/sign_in"
+        android:onClick="sign_in"/>
 
     <Button
         android:onClick="launch_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up" />
+        android:text="@string/sign_up"/>
 
 </LinearLayout>
