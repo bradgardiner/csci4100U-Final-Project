@@ -9,6 +9,7 @@ public class User{
     String email;
     String password;
     boolean runner;
+    private long id;
 
     public User(String username, String email, String password, boolean runner){
         this.username = username;
@@ -32,5 +33,13 @@ public class User{
 
     public boolean isRunner() {
         return runner;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 }
