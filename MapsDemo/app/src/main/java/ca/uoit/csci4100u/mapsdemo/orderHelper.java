@@ -17,6 +17,7 @@ public class orderHelper extends SQLiteOpenHelper {
     static final int DATABASE_VERSION = 1;
 
     private orderHelper oh;
+    private Order order;
 
     private String DROP_STATEMENT = "DROP TABLE menuItems";
     private String CREATE_STATEMENT = OrderCreate;
@@ -26,7 +27,8 @@ public class orderHelper extends SQLiteOpenHelper {
     static final String OrderCreate = "CREATE TABLE orderItems(\n" +
             "\tusername TEXT PRIMARY KEY,\n" +
             "\tprice TEXT NOT NULL,\n" +
-            "\tamount TEXT NOT NULL \n" +
+            "\tproducts TEXT NOT NULL \n" +
+            "\tlocation TEXT NOT NULL \n" +
             ");";
     /*static final String OrderItems = "INSERT INTO orderItems(\n" +
             "\tVALUES (\"Coffee\", 1.99, \"Tim Hortons Original Blend Coffee: Small, Medium, and Large\"),\n" +
@@ -66,43 +68,64 @@ public class orderHelper extends SQLiteOpenHelper {
     }
 
     public List<Order> getOrders(){
-        ArrayList<Item> items = new ArrayList<>();
+        ArrayList<Order> orders = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = new String[] {"name","price","desc"};
+        String[] columns = new String[] {"username","price","products","location"};
         String where = "";
         String[] whereArgs = new String[] {};
-        Cursor cursor = db.query(OrderTable,columns,where,whereArgs,"","","name");
+        Cursor cursor = db.query(OrderTable,columns,where,whereArgs,"","","username");
 
         cursor.moveToFirst();
         do{
             if(!cursor.isAfterLast()){
                 String name = cursor.getString(0);
                 float price = cursor.getFloat(1);
-                String desc = cursor.getString(2);
-                Item temp = new Item(name,desc,price);
-                items.add(temp);
+                String product = cursor.getString(2);
+                String location = cursor.getString(3);
+                Order temp = new Order(name,location,product,price);
+                orders.add(temp);
             }
             cursor.moveToNext();
         }while(!cursor.isAfterLast());
-        return items;
+        return orders;
     }
 
-    public Item createItem(String name, float price, String desc){
-        Item item = new Item(name,desc,price);
+    public Order createOrder(String name, String location){
+        Order order = new Order(name,location);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues newVals = new ContentValues();
+        /*ContentValues newVals = new ContentValues();
         newVals.put("name","Coffee");
         newVals.put("price","2.4");
         newVals.put("desc","COFFEE");
-        long i = db.insert(ItemTable,null,newVals);
+        long i = db.insert(OrderTable,null,newVals);*/
 
-        return item;
+        return order;
     }
 
-    public List<Item> getSubItems(String table){
+    public Order addToOrder(String product, int amount, float price)
+    {
+        order.addToOrder(product, amount, price);
+
+        return order;
+    }
+
+    public Order finalizeOrder()
+    {
+
+        //add order to database here?
+        /*ContentValues newVals = new ContentValues();
+        newVals.put("name","Coffee");
+        newVals.put("price","2.4");
+        newVals.put("desc","COFFEE");
+        long i = db.insert(OrderTable,null,newVals);*/
+
+        return order;
+    }
+
+    /*public List<Order> getSubItems(String table){
         List<Item> items = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -117,7 +140,7 @@ public class orderHelper extends SQLiteOpenHelper {
         }
         return items;
 
-    }
+    }*/
 
 
 

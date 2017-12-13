@@ -10,6 +10,13 @@ public class Order {
     String productNumbers;
     String location;
 
+    public Order(String username, String location, String productNumbers, float price){
+        this.username = username;
+        this.price = price;
+        this.productNumbers = productNumbers;
+        this.location = location;
+    }
+
     public Order(String username, String location){
         this.username = username;
         this.price = 0;
@@ -24,7 +31,9 @@ public class Order {
     }
 
     public String getName(){return username;}
+    public String getOrder(){return productNumbers;}
     public float getPrice(){return price;}
+    public String getLocation() {return location;}
 
 
 }
