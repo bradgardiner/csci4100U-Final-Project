@@ -1,16 +1,21 @@
 package ca.uoit.csci4100u.mapsdemo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class allItems extends AppCompatActivity {
+public class allItems extends AppCompatActivity
+                        implements AdapterView.OnItemClickListener{
 
     ItemHelper ih;
     private ListView lItem;
+    ItemArrayAdapter ad;
 
 
     @Override
@@ -20,19 +25,32 @@ public class allItems extends AppCompatActivity {
         lItem = (ListView)findViewById(R.id.ItemsList);
 
         ih = new ItemHelper(this);
-        ih.createItem("coffee",2.3f,"COFFEE");
+        addItems();
         updateItemList();
+        lItem.setOnItemClickListener(this);
     }
 
     private void updateItemList(){
         ArrayList<Item> arr = new ArrayList<>();
         //Item i = new Item("n","2",9.2f);
         //arr.add(i);
-        ItemArrayAdapter ad = new ItemArrayAdapter(this,ih.getItems());
+        ad = new ItemArrayAdapter(this,ih.getItems());
         lItem.setAdapter(ad);
     }
 
+    @Override
+    public void onItemClick(AdapterView aView, View source, int pos, long id){
+        Intent i = new Intent(this,SubItem.class);
+        i.putExtra("item",pos);
+        startActivity(i);
+    }
+
     public void addItems(){
-        ih.createItem("coffee",2.3f,"COFFEE");
+        ih.createItem("coffee",2.3f,"Coffee Options inside");
+        ih.createItem("Tea",2.3f,"Tea types found inside");
+        ih.createItem("Donuts",2.3f,"Donut types found inside");
+        ih.createItem("Sandwiches",2.3f,"Sandwiches types found inside");
+        ih.createItem("Breakfast",2.3f,"Breakfast types found inside");
+        ih.createItem("Cookies",2.3f,"Cookie types found inside");
     }
 }
