@@ -1,5 +1,6 @@
 package ca.uoit.csci4100u.mapsdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,6 +22,15 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void launch_sign_up(View view){
+        //go to sign up view
+        Intent intent = new Intent(this,SignUpActivity.class);
+        startActivity(intent);
+    }
+
+    public void sign_in(View view){
+        //Check username and password against table of users
+        //if there is a match, check user type
+        //for each user type go to a different view
 
     }
 
