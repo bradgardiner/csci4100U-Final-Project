@@ -11,10 +11,6 @@ public class allItems extends AppCompatActivity {
 
     ItemHelper ih;
     private ListView lItem;
-    private ArrayList<Item> items;
-    private ArrayList<Item> Muffins;
-    private ArrayList<Item> Donuts;
-    private ArrayList<Item> Teas;
 
 
     @Override
@@ -24,11 +20,19 @@ public class allItems extends AppCompatActivity {
         lItem = (ListView)findViewById(R.id.ItemsList);
 
         ih = new ItemHelper(this);
-        items = ih.getItems();
+        ih.createItem("coffee",2.3f,"COFFEE");
+        updateItemList();
     }
 
     private void updateItemList(){
-        ItemArrayAdapter ad = new ItemArrayAdapter(this,items);
+        ArrayList<Item> arr = new ArrayList<>();
+        //Item i = new Item("n","2",9.2f);
+        //arr.add(i);
+        ItemArrayAdapter ad = new ItemArrayAdapter(this,ih.getItems());
         lItem.setAdapter(ad);
+    }
+
+    public void addItems(){
+        ih.createItem("coffee",2.3f,"COFFEE");
     }
 }
