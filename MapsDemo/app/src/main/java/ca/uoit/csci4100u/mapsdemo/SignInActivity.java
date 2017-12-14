@@ -29,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
 
          uh = new UserHelper(this);
 
-         uh.createUser("admin", "bradgardiner21@gmail.com", "admin", true );
+         uh.createUser("admin", "bradgardiner21@gmail.com", "admin", "run" );
 
 
 
@@ -65,7 +65,7 @@ public class SignInActivity extends AppCompatActivity {
         }
 
         if(current.getPassword() != password){
-            Log.i("Password incorrect", "PLease try again");
+            Log.i("Password incorrect", "Please try again");
         }
         else{
             //Start main intent of application

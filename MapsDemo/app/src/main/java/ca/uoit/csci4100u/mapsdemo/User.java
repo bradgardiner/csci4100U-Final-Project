@@ -8,10 +8,10 @@ public class User{
     String username;
     String email;
     String password;
-    boolean runner;
+    String runner;
     private long id;
 
-    public User(String username, String email, String password, boolean runner){
+    public User(String username, String email, String password, String runner){
         this.username = username;
         this.email =  email;
         this.password = password;
@@ -31,7 +31,7 @@ public class User{
         return password;
     }
 
-    public boolean isRunner() {
+    public String isRunner() {
         return runner;
     }
 

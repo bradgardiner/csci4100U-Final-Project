@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity{
         }
         else{
             if(password == confirmPass){
-                uh.createUser(username, email, password, false);
+                uh.createUser(username, email, password, "");
                 //launch main intent
                 Intent intent = new Intent(this, MapsActivity.class);
             }

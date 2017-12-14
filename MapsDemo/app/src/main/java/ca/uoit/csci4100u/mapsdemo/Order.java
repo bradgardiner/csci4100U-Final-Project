@@ -30,6 +30,11 @@ public class Order {
         this.price += price;
     }
 
+    public void computeOrder(){
+        //This is where we will compile the order and send it to the db and set its status to open
+
+    }
+
     public String getName(){return username;}
     public String getOrder(){return productNumbers;}
     public float getPrice(){return price;}

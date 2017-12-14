@@ -24,19 +24,21 @@ public class UserHelper extends SQLiteOpenHelper {
             "\t_id integer primary key autoincrement,\n" +
             "\tusername TEXT NOT NULL,\n" +
             "\temail TEXT NOT NULL,\n" +
-            "\tpassword TEXT NOT NULL \n" +
-            "\trunner BIT \n" +
+            "\tpassword TEXT NOT NULL, \n" +
+            "\trunner TEXT NOT NULL \n" +
             ");";
 
 
-    static final String DROP_STATEMENT = "DROP TABLE contacts";
+    static final String DROP_STATEMENT = "DROP TABLE Users";
 
 
-    public UserHelper(Context context){super(context, "Items", null,DATABASE_VERSION);};
+    public UserHelper(Context context){super(context, "Users", null,DATABASE_VERSION);};
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        System.out.print("HENLO?!?!?");
+        Log.i("Creating Table", "****************************");
         db.execSQL(CREATE_STATEMENT);
     }
 
@@ -52,7 +54,7 @@ public class UserHelper extends SQLiteOpenHelper {
     public User createUser(String username,
                                  String email,
                                  String password,
-                                 boolean runner) {
+                                 String runner) {
         User user = new User(username, email, password, runner);
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -88,7 +90,7 @@ public class UserHelper extends SQLiteOpenHelper {
             String username = cursor.getString(1);
             String email = cursor.getString(2);
             String password = cursor.getString(3);
-            boolean runner = cursor.getInt(4) > 0;
+            String runner = cursor.getString(4);
 
             user = new User(username, email, password, runner);
 
@@ -115,7 +117,7 @@ public class UserHelper extends SQLiteOpenHelper {
                 String username = cursor.getString(1);
                 String email = cursor.getString(2);
                 String password = cursor.getString(3);
-                boolean runner = cursor.getInt(4)>0;
+                String runner = cursor.getString(4);
 
                 User user = new User(username, email, password, runner);
 
