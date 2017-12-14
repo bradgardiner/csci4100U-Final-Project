@@ -16,7 +16,7 @@ import java.util.List;
 
 public class UserHelper extends SQLiteOpenHelper {
 
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 2;
 
     static final String TABLE = "Users";
 
