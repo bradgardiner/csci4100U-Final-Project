@@ -29,6 +29,9 @@ public class SignInActivity extends AppCompatActivity {
 
          uh = new UserHelper(this);
 
+         uh.createUser("admin", "bradgardiner21@gmail.com", "admin", true );
+
+
 
     }
 
