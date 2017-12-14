@@ -77,7 +77,7 @@ public class UserHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = new String[] {"_id", "username", "email", "password", "runner"};
-        String where = "_id = ?";
+        String where = "username = ?";
         String[] whereArgs = new String[] {"" + id};
 
         Cursor cursor = db.query(TABLE, columns, where, whereArgs, "", "","");
