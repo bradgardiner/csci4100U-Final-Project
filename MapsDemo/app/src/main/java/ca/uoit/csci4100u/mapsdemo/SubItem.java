@@ -6,11 +6,19 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import ca.uoit.csci4100u.mapsdemo.sampledata.Item;
+import ca.uoit.csci4100u.mapsdemo.sampledata.ItemArrayAdapter;
+import ca.uoit.csci4100u.mapsdemo.sampledata.subItem;
+import ca.uoit.csci4100u.mapsdemo.sampledata.subItemArrayAdapter;
+import ca.uoit.csci4100u.mapsdemo.sampledata.subItemOptions;
 
 public class SubItem extends AppCompatActivity {
 
-    ItemArrayAdapter iaa;
+    subItemArrayAdapter iaa;
+    subItemOptions sio;
     ItemHelper ih;
     ListView list;
 
@@ -22,13 +30,20 @@ public class SubItem extends AppCompatActivity {
         Intent n = getIntent();
         int pos = n.getIntExtra("item",0);
         ih = new ItemHelper(this);
-        list = (ListView) findViewById(R.id.listView);
+        list = (ListView) findViewById(R.id.itemList);
         List<Item> items = ih.getItems();
         Item Table = items.get(pos);
 
         TextView table = (TextView)findViewById(R.id.txtTable);
         table.setText(Table.getName());
 
+        updateItemList();
+    }
+
+    private void updateItemList(){
+        List<subItem> items = ih.getSubItems("Coffee");
+        iaa = new subItemArrayAdapter(this,items);
+        list.setAdapter(iaa);
     }
 
     public void createSandwichVals(){

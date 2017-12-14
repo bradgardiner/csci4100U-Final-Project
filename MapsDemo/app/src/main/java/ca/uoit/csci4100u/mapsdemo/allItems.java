@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import ca.uoit.csci4100u.mapsdemo.sampledata.Item;
+import ca.uoit.csci4100u.mapsdemo.sampledata.ItemArrayAdapter;
 
 public class allItems extends AppCompatActivity
                         implements AdapterView.OnItemClickListener{
@@ -31,9 +33,6 @@ public class allItems extends AppCompatActivity
     }
 
     private void updateItemList(){
-        ArrayList<Item> arr = new ArrayList<>();
-        //Item i = new Item("n","2",9.2f);
-        //arr.add(i);
         ad = new ItemArrayAdapter(this,ih.getItems());
         lItem.setAdapter(ad);
     }
@@ -52,5 +51,7 @@ public class allItems extends AppCompatActivity
         ih.createItem("Sandwiches",2.3f,"Sandwiches types found inside");
         ih.createItem("Breakfast",2.3f,"Breakfast types found inside");
         ih.createItem("Cookies",2.3f,"Cookie types found inside");
+        ih.createOtherItem("Coffee","Defcafe",2.3f,0);
+        ih.createOtherItem("Coffee","Defca",2.3f,1);
     }
 }

@@ -33,6 +33,7 @@ public class SearchActivity extends Activity implements LocationListener {
 
         // get access to geolocation services
         setupGeolocation();
+
         Intent intent = new Intent(this,allItems.class);
         startActivity(intent);
 
@@ -64,7 +65,6 @@ public class SearchActivity extends Activity implements LocationListener {
             verifyGeolocationEnabled();
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String[] perms,
@@ -153,7 +153,11 @@ public class SearchActivity extends Activity implements LocationListener {
 
         // geocode the result - get the location name
         String locationName = geocode(location.getLatitude(), location.getLongitude());
-
+        Intent showMapIntent = new Intent(this, MapsActivity.class);
+        showMapIntent.putExtra("locationName", locationName);
+        showMapIntent.putExtra("backupLatitude", latitude);
+        showMapIntent.putExtra("backupLongitude", longitude);
+        startActivity(showMapIntent);
         // show the location in the search UI
         EditText txtLocation = (EditText)findViewById(R.id.txtLocation);
         txtLocation.setText(locationName);

@@ -14,4 +14,5 @@
     <string name="sign_up">Sign Up</string>
     <string name="email_hint">something@email.com</string>
     <string name="confirm_password">confirm password</string>
+    <string name="options">Options</string>
 </resources>
