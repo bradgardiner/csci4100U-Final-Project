@@ -27,6 +27,7 @@ public class AllOrders extends AppCompatActivity implements AdapterView.OnItemCl
         lOrder = (ListView)findViewById(R.id.OrdersList);
 
         oh = new orderHelper(this);
+        addOrder();
         updateOrderList();
         lOrder.setOnItemClickListener(this);
     }
@@ -41,6 +42,12 @@ public class AllOrders extends AppCompatActivity implements AdapterView.OnItemCl
         Intent i = new Intent(this,SubItem.class);
         i.putExtra("item",pos);
         startActivity(i);
+    }
+
+    public void addOrder() {
+        oh.createOrder("Brad");
+        oh.addToOrder("Green Tea", 1, 2.9f);
+        oh.finalizeOrder();
     }
 
 

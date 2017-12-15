@@ -27,7 +27,7 @@ public class orderHelper extends SQLiteOpenHelper {
     static final String OrderCreate = "CREATE TABLE orderItems(\n" +
             "\tusername TEXT PRIMARY KEY,\n" +
             "\tprice TEXT NOT NULL,\n" +
-            "\tproducts TEXT NOT NULL \n" +
+            "\tproducts TEXT NOT NULL, \n" +
             "\tlocation TEXT NOT NULL \n" +
             ");";
     /*static final String OrderItems = "INSERT INTO orderItems(\n" +

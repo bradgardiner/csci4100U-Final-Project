@@ -15,7 +15,7 @@ import ca.uoit.csci4100u.mapsdemo.sampledata.Item;
  * Created by Anthony on 2017-12-15.
  */
 
-public class OrderArrayAdapter extends ArrayAdapter<Item> {
+public class OrderArrayAdapter extends ArrayAdapter<Order> {
     private List<Order> orders;
     private Context context;
 
