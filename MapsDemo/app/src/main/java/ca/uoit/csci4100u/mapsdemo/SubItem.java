@@ -3,10 +3,12 @@ package ca.uoit.csci4100u.mapsdemo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -30,16 +32,17 @@ public class SubItem extends AppCompatActivity
     private Item Table;
     private ArrayList<Item> main;
     private ArrayList<Item> sub;
+    private Bundle bun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_item);
 
-        if(savedInstanceState == null || !savedInstanceState.containsKey("order")){
-
+        if(bun == null || bun.containsKey("order")){
+            bun = new Bundle();
         }else{
-            order = savedInstanceState.getParcelableArrayList("order");
+            order = bun.getParcelableArrayList("order");
         }
 
         Intent n = getIntent();
@@ -54,6 +57,8 @@ public class SubItem extends AppCompatActivity
 
         TextView table = (TextView)findViewById(R.id.txtTable);
         table.setText(Table.getName());
+
+        items = ih.getSubItems(Table.getName());
 
         updateItemList();
     }
@@ -75,24 +80,42 @@ public class SubItem extends AppCompatActivity
         optionL.setAdapter(sio);
     }
 
-    protected void onSaveInstance(Bundle outState){
+    protected void save(Bundle outState){
         outState.putParcelableArrayList("order",order);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onItemClick(AdapterView aView, View source, int pos, long id){
+        List<Item> items = ih.getSubItems(Table.getName());
+        List<Item>main = new ArrayList<Item>();
+        List<Item>sub = new ArrayList<Item>();
+        order = new ArrayList<>();
+        for (int i =0; i <= items.size()-1; i++){
+            if (items.get(i).getOption()){
+                sub.add(items.get(i));
+            }else{
+                main.add(items.get(i));
+            }
+        }
+        //Item temp = new Item("name","dd",3.9f);
+        //items.add(temp);
         if (list == aView){
-            order.add(main.get(pos));
+            order.add(main.get(0));
+            Toast toast= Toast.makeText(getApplicationContext(),main.get(pos).getName()+" added to order",Toast.LENGTH_SHORT);
+            toast.show();
+            save(bun);
+            Log.i("tttttt",main.get(pos).getName());
         }else{
-            order.add(sub.get(pos));
+            order.add(sub.get(0));
+            Toast toast= Toast.makeText(getApplicationContext(),sub.get(pos).getName()+" added to order",Toast.LENGTH_SHORT);
+            toast.show();
+            save(bun);
+            Log.i("tttttt",sub.get(pos).getName());
         }
     }
 
-    public void createSandwichVals(){
-
-    }
-    public void createBreakfastVals(){
-
+    public void quit(View view){
+        finish();
     }
 }

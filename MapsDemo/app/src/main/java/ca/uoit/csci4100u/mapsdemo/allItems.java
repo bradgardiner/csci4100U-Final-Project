@@ -27,7 +27,6 @@ public class allItems extends AppCompatActivity
         lItem = (ListView)findViewById(R.id.ItemsList);
 
         ih = new ItemHelper(this);
-        addItems();
         updateItemList();
         lItem.setOnItemClickListener(this);
     }
@@ -41,7 +40,7 @@ public class allItems extends AppCompatActivity
     public void onItemClick(AdapterView aView, View source, int pos, long id){
         Intent i = new Intent(this,SubItem.class);
         i.putExtra("item",pos);
-        startActivityForResult(i,1);
+        startActivity(i);
     }
 
     public void addItems(){
@@ -74,5 +73,10 @@ public class allItems extends AppCompatActivity
         ih.createOtherItem("Cookie","Oatmeal Rasin",0.75f,0);
 
         //ih.createOtherItem("","",,);
+    }
+
+    public void checkOut(View view){
+        Intent i = new Intent(this,Checkout.class);
+        startActivity(i);
     }
 }

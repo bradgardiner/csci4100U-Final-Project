@@ -20,7 +20,7 @@ public class OrderArrayAdapter extends ArrayAdapter<Order> {
     private Context context;
 
     public OrderArrayAdapter(Context context, List<Order> data){
-        super(context, R.layout.order_description_layout, data);
+        super(context, R.layout.item_layout, data);
         this.context = context;
         orders = data;
     }
@@ -43,8 +43,6 @@ public class OrderArrayAdapter extends ArrayAdapter<Order> {
         TextView txtDesc = (TextView)p.findViewById(R.id.txtDesc);
         txtDesc.setText(order.getOrder());
 
-        TextView txtLocation = (TextView)p.findViewById(R.id.txtLoc);
-        txtDesc.setText(order.getLocation());
 
 
         return p;
