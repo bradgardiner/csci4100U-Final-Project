@@ -34,8 +34,8 @@ public class SearchActivity extends Activity implements LocationListener {
         // get access to geolocation services
         setupGeolocation();
 
-        Intent intent = new Intent(this,allItems.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this,MapsActivity.class);
+//        startActivity(intent);
 
     }
 
