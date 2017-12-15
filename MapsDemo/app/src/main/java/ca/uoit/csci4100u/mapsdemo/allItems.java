@@ -79,5 +79,6 @@ public class allItems extends AppCompatActivity
     public void checkOut(View view){
         Intent i = new Intent(this,Checkout.class);
         startActivity(i);
+        finish();
     }
 }
