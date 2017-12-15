@@ -3,9 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MapsDemo.iml" filepath="$PROJECT_DIR$/MapsDemo.iml" />
+      <module fileurl="file://C:\Users\shayne\Desktop\INHERE\csci4100U-Final-Project\MapsDemo\MapsDemo.iml" filepath="C:\Users\shayne\Desktop\INHERE\csci4100U-Final-Project\MapsDemo\MapsDemo.iml" />
       <module fileurl="file://C:\Users\Brad\Documents\mobile\csci4100U-Final-Project\MapsDemo\MapsDemo.iml" filepath="C:\Users\Brad\Documents\mobile\csci4100U-Final-Project\MapsDemo\MapsDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\Brad\Documents\mobile\csci4100U-Final-Project\MapsDemo\app\app.iml" filepath="C:\Users\Brad\Documents\mobile\csci4100U-Final-Project\MapsDemo\app\app.iml" />
+      <module fileurl="file://C:\Users\shayne\Desktop\INHERE\csci4100U-Final-Project\MapsDemo\app\app.iml" filepath="C:\Users\shayne\Desktop\INHERE\csci4100U-Final-Project\MapsDemo\app\app.iml" />
     </modules>
   </component>
 </project>
