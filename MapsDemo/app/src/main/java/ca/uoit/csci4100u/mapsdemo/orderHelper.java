@@ -19,7 +19,7 @@ public class orderHelper extends SQLiteOpenHelper {
     private orderHelper oh;
     private Order order;
 
-    private String DROP_STATEMENT = "DROP TABLE menuItems";
+    private String DROP_STATEMENT = "DROP TABLE orderItems";
     private String CREATE_STATEMENT = OrderCreate;
 
     static final String OrderTable = "orderItems";
