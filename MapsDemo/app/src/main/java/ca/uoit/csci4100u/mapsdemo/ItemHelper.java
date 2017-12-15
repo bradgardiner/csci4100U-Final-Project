@@ -22,7 +22,12 @@ public class ItemHelper extends SQLiteOpenHelper{
 
 
     private String DROP_STATEMENT = "DROP TABLE menuItems\n" +
-                                    "DROP TABLE Coffee";
+                                    "DROP TABLE Coffee\n" +
+                                    "DROP TABLE Tea\n" +
+                                    "DROP TABLE Muffin\n" +
+                                    "DROP TABLE Sandwich\n" +
+                                    "DROP TABLE Breakfast\n" +
+                                    "DROP TABLE Cookie";
 
     static final String ItemTable = "menuItems";
     static final String CoffeeTable = "Coffee";
@@ -30,7 +35,7 @@ public class ItemHelper extends SQLiteOpenHelper{
     static final String CoffeeCreate = "CREATE TABLE Coffee(\n" +
             "\tname TEXT PRIMARY KEY,\n" +
             "\tprice REAL NOT NULL,\n" +
-            "\toption TEXT NOT NULL \n" +
+            "\toption INTEGER NOT NULL \n" +
             "\n" +
             ");";
 
@@ -41,25 +46,46 @@ public class ItemHelper extends SQLiteOpenHelper{
             "\n" +
             ");";
 
-    static final String DonutCreate = "CREATE TABLE Donuts(\n" +
-            "\tname TEXT PRIMARY KEY\n" +
+    static final String DonutCreate = "CREATE TABLE Donut(" +
+        "\tname TEXT PRIMARY KEY,\n" +
+        "\tprice REAL NOT NULL,\n" +
+        "\toption INTEGER NOT NULL \n" +
+        "\n" +
+        ");";
+
+    static final String TeaCreate =  "CREATE TABLE Tea(" +
+            "\tname TEXT PRIMARY KEY,\n" +
+            "\tprice REAL NOT NULL,\n" +
+            "\toption INTEGER NOT NULL \n" +
+            "\n" +
             ");";
 
-    static final String TeaCreate = "CREATE TABLE Tea(\n" +
-            "\tname TEXT PRIMARY KEY\n" +
+    static final String MuffinCreate =  "CREATE TABLE Muffin(" +
+            "\tname TEXT PRIMARY KEY,\n" +
+            "\tprice REAL NOT NULL,\n" +
+            "\toption INTEGER NOT NULL \n" +
+            "\n" +
             ");";
 
-    static final String MuffinCreate = "CREATE TABLE Muffins(\n" +
-            "\tname Text PRIMARY KEY\n" +
-            ")";
+    static final String CookieCreate =  "CREATE TABLE Cookie(" +
+            "\tname TEXT PRIMARY KEY,\n" +
+            "\tprice REAL NOT NULL,\n" +
+            "\toption INTEGER NOT NULL \n" +
+            "\n" +
+            ");";
 
-    static final String CookieCreate = "CREATE TABLE Cookies(\n "+
-            "name TEXT PRIMARY KEY\n)";
-
-    static final String BreakFastCreate = "CREATE TABLE Breakfast(\n "+
-            "name TEXT PRIMARY KEY\n)";
-    static final String SandwichCreate= "CREATE TABLE Sandwich(\n "+
-            "name TEXT PRIMARY KEY\n)";
+    static final String BreakFastCreate =  "CREATE TABLE Breakfast(" +
+            "\tname TEXT PRIMARY KEY,\n" +
+            "\tprice REAL NOT NULL,\n" +
+            "\toption INTEGER NOT NULL \n" +
+            "\n" +
+            ");";
+    static final String SandwichCreate=  "CREATE TABLE Sandwich(" +
+            "\tname TEXT PRIMARY KEY,\n" +
+            "\tprice REAL NOT NULL,\n" +
+            "\toption INTEGER NOT NULL \n" +
+            "\n" +
+            ");";
 
 
 
@@ -72,6 +98,12 @@ public class ItemHelper extends SQLiteOpenHelper{
         db.execSQL(ItemCreate);
         Log.i("ItemCreate","eeeeeeee");
         db.execSQL(CoffeeCreate);
+        db.execSQL(TeaCreate);
+        db.execSQL(SandwichCreate);
+        db.execSQL(MuffinCreate);
+        db.execSQL(CookieCreate);
+        db.execSQL(BreakFastCreate);
+        db.execSQL(DonutCreate);
         Log.i("Coffee","wesdfs");
     }
 
@@ -130,14 +162,14 @@ public class ItemHelper extends SQLiteOpenHelper{
         String[] columns = new String[] {"name","price","option"};
         String where = "";
         String[] whereArgs = new String[] {};
-        Cursor cursor = db.query(CoffeeTable,columns,where,whereArgs,"","","name");
+        Cursor cursor = db.query(table,columns,where,whereArgs,"","","name");
 
         cursor.moveToFirst();
         do{
             if(!cursor.isAfterLast()){
                 String name = cursor.getString(0);
                 float price = Float.parseFloat(cursor.getString(1));
-                String option = cursor.getString(2);
+                int option = cursor.getInt(2);
                 Item temp = new Item(name,price,option);
                 items.add(temp);
             }
@@ -147,7 +179,7 @@ public class ItemHelper extends SQLiteOpenHelper{
 
     }
 
-    public Item createOtherItem(String tableName, String name,float price, String options){
+    public Item createOtherItem(String tableName, String name,float price, int options){
         Item item = new Item(name,price,options);
 
         SQLiteDatabase db = this.getWritableDatabase();

@@ -15,11 +15,11 @@ import ca.uoit.csci4100u.mapsdemo.R;
  * Created by shayne on 2017-12-14.
  */
 
-public class subItemOptions extends ArrayAdapter<subItem>{
-    private List<subItem> items;
+public class subItemOptions extends ArrayAdapter<Item>{
+    private List<Item> items;
     private Context context;
 
-    public subItemOptions(Context context, List<subItem> data){
+    public subItemOptions(Context context, List<Item> data){
         super(context, R.layout.sub_item,data);
         this.context = context;
         items = data;
@@ -27,14 +27,14 @@ public class subItemOptions extends ArrayAdapter<subItem>{
 
     @Override
     public View getView(int position, View reusable, ViewGroup parent){
-        subItem item = items.get(position);
+        Item item = items.get(position);
         View p = reusable;
 
         if (reusable == null){
             LayoutInflater inf = LayoutInflater.from(getContext());
             p = inf.inflate(R.layout.item_layout, null);
         }
-        if(item.isOption()==true){
+        if(item.getOption()){
             TextView txtName = (TextView)p.findViewById(R.id.txtName2);
             txtName.setText(item.getName());
 

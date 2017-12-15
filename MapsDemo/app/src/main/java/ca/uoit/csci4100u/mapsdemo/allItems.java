@@ -45,13 +45,34 @@ public class allItems extends AppCompatActivity
     }
 
     public void addItems(){
-        ih.createItem("coffee",2.3f,"Coffee Options inside");
+        ih.createItem("Coffee",2.3f,"Coffee Options inside");
         ih.createItem("Tea",2.3f,"Tea types found inside");
         ih.createItem("Donuts",2.3f,"Donut types found inside");
-        ih.createItem("Sandwiches",2.3f,"Sandwiches types found inside");
+        ih.createItem("Sandwich",2.3f,"Sandwiches types found inside");
         ih.createItem("Breakfast",2.3f,"Breakfast types found inside");
         ih.createItem("Cookies",2.3f,"Cookie types found inside");
-        ih.createOtherItem("Coffee","Defcafe",2.3f,"0");
-        ih.createOtherItem("Coffee","Defca",2.3f,"1");
+        ih.createOtherItem("Coffee","Defcafe",2.3f,0);
+        ih.createOtherItem("Coffee","Milk",0f,1);
+        ih.createOtherItem("Coffee","Cream",0f,1);
+        ih.createOtherItem("Coffee","Sugar",0f,1);
+        ih.createOtherItem("Coffee","Sweatener",0f,1);
+        ih.createOtherItem("Coffee","Dark Roast",2.3f,0);
+        ih.createOtherItem("Tea","Green",2.9f,0);
+        ih.createOtherItem("Tea","Orange Pekoe",2.9f,0);
+        ih.createOtherItem("Tea","Milk",0f,1);
+        ih.createOtherItem("Tea","Cream",0f,1);
+        ih.createOtherItem("Tea","Sugar",0f,1);
+        ih.createOtherItem("Tea","Sweatener",0f,1);
+        ih.createOtherItem("Donut","Chocolate Dip",1.00f,0);
+        ih.createOtherItem("Donut","Vanilla Dip",1.00f,0);
+        ih.createOtherItem("Sandwich","Sesame Seed Bagel",1.50f,0);
+        ih.createOtherItem("Sandwich","Everything Bagel",1.50f,0);
+        ih.createOtherItem("Sandwich","Cream Cheese",0.25f,1);
+        ih.createOtherItem("Sandwich","Peanut Butter",0.25f,1);
+        ih.createOtherItem("Breakfast","HashBrown",1.50f,0);
+        ih.createOtherItem("Cookie","Chocolate Chip",0.75f,0);
+        ih.createOtherItem("Cookie","Oatmeal Rasin",0.75f,0);
+
+        //ih.createOtherItem("","",,);
     }
 }

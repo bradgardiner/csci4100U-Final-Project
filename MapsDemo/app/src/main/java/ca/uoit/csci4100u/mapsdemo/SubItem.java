@@ -21,6 +21,7 @@ public class SubItem extends AppCompatActivity {
     subItemOptions sio;
     ItemHelper ih;
     ListView list;
+    Item Table;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class SubItem extends AppCompatActivity {
         ih = new ItemHelper(this);
         list = (ListView) findViewById(R.id.itemList);
         List<Item> items = ih.getItems();
-        Item Table = items.get(pos);
+        Table = items.get(pos);
 
         TextView table = (TextView)findViewById(R.id.txtTable);
         table.setText(Table.getName());
@@ -41,10 +42,9 @@ public class SubItem extends AppCompatActivity {
     }
 
     private void updateItemList(){
-        List<Item> items = ih.getSubItems("Coffee");
-        Item item = new Item("name",2.4f,"0");
-        items.add(item);
+        List<Item> items = ih.getSubItems(Table.getName());
         iaa = new ItemArrayAdapter(this,items);
+        sio = new subItemOptions(this,items);
         list.setAdapter(iaa);
     }
 
