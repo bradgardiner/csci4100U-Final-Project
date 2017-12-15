@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
@@ -74,11 +75,17 @@ public class SignInActivity extends AppCompatActivity {
                }
                else{
                    Log.i("Password incorrect", "Please try again");
+                   Toast toast= Toast.makeText(getApplicationContext(),"Password or username Not correct",Toast.LENGTH_SHORT);
+                   toast.show();
 
 
                }
-
+            break;
            }
+           else{
+                Toast toast= Toast.makeText(getApplicationContext(),"Password or username Not correct",Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
 
 

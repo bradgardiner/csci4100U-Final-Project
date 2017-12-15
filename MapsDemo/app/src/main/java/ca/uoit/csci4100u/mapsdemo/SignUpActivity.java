@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,8 @@ public class SignUpActivity extends AppCompatActivity{
 
         if (usernames.contains(username)){
             Log.i("Username already exists" , "Try another.");
+            Toast toast= Toast.makeText(getApplicationContext(),"Username already exists",Toast.LENGTH_SHORT);
+            toast.show();
         }
         else{
             if(password.equals(confirmPass)){
@@ -63,8 +66,12 @@ public class SignUpActivity extends AppCompatActivity{
                 startActivity(intent);
             }
             else{
+                Toast toast= Toast.makeText(getApplicationContext(),"Passwords don't match",Toast.LENGTH_SHORT);
+                toast.show();
                 Log.i("Passwords dont match", "please try again");
             }
+            Toast toast= Toast.makeText(getApplicationContext(),"Passwords don't match",Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
