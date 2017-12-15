@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +118,10 @@ public class orderHelper extends SQLiteOpenHelper {
     public boolean deleteOrder(long id){
         SQLiteDatabase db = this.getWritableDatabase();
 
+        Log.i("Id is ",  "" + id);
+
         int numRows = db.delete(OrderTable, "_id = ?", new String[] {"" + id});
+        Log.i ("Deleting -> ", "" + numRows);
         return (numRows ==1);
     }
 
