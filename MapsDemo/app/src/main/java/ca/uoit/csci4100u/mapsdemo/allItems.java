@@ -41,7 +41,7 @@ public class allItems extends AppCompatActivity
     public void onItemClick(AdapterView aView, View source, int pos, long id){
         Intent i = new Intent(this,SubItem.class);
         i.putExtra("item",pos);
-        startActivity(i);
+        startActivityForResult(i,1);
     }
 
     public void addItems(){
