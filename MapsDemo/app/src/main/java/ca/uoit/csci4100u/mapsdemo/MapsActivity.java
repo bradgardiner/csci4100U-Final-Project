@@ -5,6 +5,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -20,7 +21,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,DataObserve {
 
     private GoogleMap mMap;
 
@@ -29,6 +30,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     FloatingActionMenu mainMenu;
     FloatingActionButton order, become_run, runner;
+
+    public static String url = "https://www.gnu.org/licenses/gpl.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +113,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomGesturesEnabled(true);
     }
 
+
     public void order(View view){
         Intent intent = new Intent(this, allItems.class);
         startActivity(intent);
@@ -120,10 +124,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-    public void become_run(View view){
-        Intent intent = new Intent(this, BecomeRunner.class);
-        startActivity(intent);
+    public void become_run(View source) {
+        Log.i("InternetResourcesDemo", "download()");
+        // initiate the download (AsyncTask)
+        GetDataTask task = new GetDataTask();
+        task.setObserver(this);
+        task.execute(new String[] { url });
     }
+
+    public void updateData(String data) {
+        // Update the UI
+        Log.i("InternetResourcesDemo", "Data");
+
+        Intent intent = new Intent(this, BecomeRunner.class);
+        intent.putExtra("DATA", data);
+        startActivity(intent);
+
+    }
+
 
 
 }
