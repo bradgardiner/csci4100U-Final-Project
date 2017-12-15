@@ -79,10 +79,10 @@ public class orderHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         do{
             if(!cursor.isAfterLast()){
-                String name = cursor.getString(0);
-                String price = cursor.getString(1);
-                String product = cursor.getString(2);
-                String location = cursor.getString(3);
+                String name = cursor.getString(1);
+                String price = cursor.getString(2);
+                String product = cursor.getString(3);
+                String location = cursor.getString(4);
                 Order temp = new Order(name,location,product,price);
                 orders.add(temp);
             }
