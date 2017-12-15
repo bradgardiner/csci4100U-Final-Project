@@ -27,7 +27,8 @@ public class ItemHelper extends SQLiteOpenHelper{
                                     "DROP TABLE Muffin\n" +
                                     "DROP TABLE Sandwich\n" +
                                     "DROP TABLE Breakfast\n" +
-                                    "DROP TABLE Cookie";
+                                    "DROP TABLE Cookie\n" +
+                                    "DROP TABLE Orders";
 
     static final String ItemTable = "menuItems";
     static final String CoffeeTable = "Coffee";
@@ -36,6 +37,13 @@ public class ItemHelper extends SQLiteOpenHelper{
             "\tname TEXT PRIMARY KEY,\n" +
             "\tprice REAL NOT NULL,\n" +
             "\toption INTEGER NOT NULL \n" +
+            "\n" +
+            ");";
+    static final String OrderCreate = "CREATE TABLE Orders(\n" +
+            "\tname TEXT NOT NULL,\n" +
+            "\tprice REAL NOT NULL,\n" +
+            "\toption INTEGER NOT NULL,\n" +
+            "\t_id INTEGER PRIMARY KEY AUTOINCREMENT\n" +
             "\n" +
             ");";
 
@@ -104,6 +112,7 @@ public class ItemHelper extends SQLiteOpenHelper{
         db.execSQL(CookieCreate);
         db.execSQL(BreakFastCreate);
         db.execSQL(DonutCreate);
+        db.execSQL(OrderCreate);
         Log.i("Coffee","wesdfs");
     }
 
@@ -193,4 +202,12 @@ public class ItemHelper extends SQLiteOpenHelper{
         return item;
     }
 
+    public List<Item> addOrderItem(Item item){
+        int option  =0;
+        if (item.getOption()){
+            option = 1;
+        }
+        createOtherItem("Orders",item.getName(),item.getPrice(),option);
+        return getSubItems("Orders");
+    }
 }

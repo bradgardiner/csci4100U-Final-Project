@@ -27,6 +27,7 @@ public class allItems extends AppCompatActivity
         lItem = (ListView)findViewById(R.id.ItemsList);
 
         ih = new ItemHelper(this);
+        addItems();
         updateItemList();
         lItem.setOnItemClickListener(this);
     }

@@ -80,17 +80,12 @@ public class SubItem extends AppCompatActivity
         optionL.setAdapter(sio);
     }
 
-    protected void save(Bundle outState){
-        outState.putParcelableArrayList("order",order);
-        super.onSaveInstanceState(outState);
-    }
-
     @Override
     public void onItemClick(AdapterView aView, View source, int pos, long id){
         List<Item> items = ih.getSubItems(Table.getName());
         List<Item>main = new ArrayList<Item>();
         List<Item>sub = new ArrayList<Item>();
-        order = new ArrayList<>();
+        List<Item> order = new ArrayList<>();
         for (int i =0; i <= items.size()-1; i++){
             if (items.get(i).getOption()){
                 sub.add(items.get(i));
@@ -101,16 +96,14 @@ public class SubItem extends AppCompatActivity
         //Item temp = new Item("name","dd",3.9f);
         //items.add(temp);
         if (list == aView){
-            order.add(main.get(0));
+            order = ih.addOrderItem(main.get(pos));
             Toast toast= Toast.makeText(getApplicationContext(),main.get(pos).getName()+" added to order",Toast.LENGTH_SHORT);
             toast.show();
-            save(bun);
             Log.i("tttttt",main.get(pos).getName());
         }else{
-            order.add(sub.get(0));
+            order = ih.addOrderItem(sub.get(pos));
             Toast toast= Toast.makeText(getApplicationContext(),sub.get(pos).getName()+" added to order",Toast.LENGTH_SHORT);
             toast.show();
-            save(bun);
             Log.i("tttttt",sub.get(pos).getName());
         }
     }
