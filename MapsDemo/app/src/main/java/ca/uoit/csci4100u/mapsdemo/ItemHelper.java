@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,18 +18,27 @@ import ca.uoit.csci4100u.mapsdemo.sampledata.subItem;
  */
 
 public class ItemHelper extends SQLiteOpenHelper{
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 10;
 
 
-    private String DROP_STATEMENT = "DROP TABLE menuItems";
-    private String CREATE_STATEMENT = ItemCreate + CoffeeCreate;
+    private String DROP_STATEMENT = "DROP TABLE menuItems\n" +
+                                    "DROP TABLE Coffee";
 
     static final String ItemTable = "menuItems";
+    static final String CoffeeTable = "Coffee";
+
+    static final String CoffeeCreate = "CREATE TABLE Coffee(\n" +
+            "\tname TEXT PRIMARY KEY,\n" +
+            "\tprice REAL NOT NULL,\n" +
+            "\toption TEXT NOT NULL \n" +
+            "\n" +
+            ");";
 
     static final String ItemCreate = "CREATE TABLE menuItems(\n" +
             "\tname TEXT PRIMARY KEY,\n" +
             "\tprice REAL NOT NULL,\n" +
             "\tdesc TEXT NOT NULL \n" +
+            "\n" +
             ");";
 
     static final String DonutCreate = "CREATE TABLE Donuts(\n" +
@@ -50,11 +60,7 @@ public class ItemHelper extends SQLiteOpenHelper{
             "name TEXT PRIMARY KEY\n)";
     static final String SandwichCreate= "CREATE TABLE Sandwich(\n "+
             "name TEXT PRIMARY KEY\n)";
-    static final String CoffeeCreate = "CREATE TABLE Coffee(\n" +
-            "name TEXT PRIMARY KEY\n" +
-            "price REAL NOT NULL\n" +
-            "option BOOLEAN NOT NULL"+
-            ")";
+
 
 
 
@@ -64,13 +70,9 @@ public class ItemHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(ItemCreate);
-        //db.execSQL(DonutCreate);
-        //db.execSQL(TeaCreate);
-        //db.execSQL(MuffinCreate);
-        //db.execSQL(CookieCreate);
-        //db.execSQL(BreakFastCreate);
-        //db.execSQL(SandwichCreate);
+        Log.i("ItemCreate","eeeeeeee");
         db.execSQL(CoffeeCreate);
+        Log.i("Coffee","wesdfs");
     }
 
     @Override
@@ -81,7 +83,7 @@ public class ItemHelper extends SQLiteOpenHelper{
         db.execSQL(DROP_STATEMENT);
 
         // re-create the database
-        db.execSQL(CREATE_STATEMENT);
+        onCreate(db);
     }
 
     public List<Item> getItems(){
@@ -121,22 +123,22 @@ public class ItemHelper extends SQLiteOpenHelper{
         return item;
     }
 
-    public List<subItem> getSubItems(String table){
-        ArrayList<subItem> items = new ArrayList<>();
+    public List<Item> getSubItems(String table){
+        ArrayList<Item> items = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = new String[] {"name","price","option"};
         String where = "";
         String[] whereArgs = new String[] {};
-        Cursor cursor = db.query(table,columns,where,whereArgs,"","","name");
+        Cursor cursor = db.query(CoffeeTable,columns,where,whereArgs,"","","name");
 
         cursor.moveToFirst();
         do{
             if(!cursor.isAfterLast()){
                 String name = cursor.getString(0);
                 float price = Float.parseFloat(cursor.getString(1));
-                int option = cursor.getInt(2);
-                subItem temp = new subItem(name,price,option);
+                String option = cursor.getString(2);
+                Item temp = new Item(name,price,option);
                 items.add(temp);
             }
             cursor.moveToNext();
@@ -145,18 +147,18 @@ public class ItemHelper extends SQLiteOpenHelper{
 
     }
 
-public subItem createOtherItem(String tableName, String name,float price, int options){
-    subItem item = new subItem(name,price,options);
+    public Item createOtherItem(String tableName, String name,float price, String options){
+        Item item = new Item(name,price,options);
 
-    SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
-    ContentValues newVals = new ContentValues();
-    newVals.put("name",name);
-    newVals.put("price",price);
-    newVals.put("option",options);
-    long i = db.insert(tableName,null,newVals);
+        ContentValues newVals = new ContentValues();
+        newVals.put("name",name);
+        newVals.put("price",price);
+        newVals.put("option",options);
+        long i = db.insert(tableName,null,newVals);
 
-    return item;
-}
+        return item;
+    }
 
 }

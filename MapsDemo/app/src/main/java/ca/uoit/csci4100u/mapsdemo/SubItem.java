@@ -17,7 +17,7 @@ import ca.uoit.csci4100u.mapsdemo.sampledata.subItemOptions;
 
 public class SubItem extends AppCompatActivity {
 
-    subItemArrayAdapter iaa;
+    ItemArrayAdapter iaa;
     subItemOptions sio;
     ItemHelper ih;
     ListView list;
@@ -41,8 +41,10 @@ public class SubItem extends AppCompatActivity {
     }
 
     private void updateItemList(){
-        List<subItem> items = ih.getSubItems("Coffee");
-        iaa = new subItemArrayAdapter(this,items);
+        List<Item> items = ih.getSubItems("Coffee");
+        Item item = new Item("name",2.4f,"0");
+        items.add(item);
+        iaa = new ItemArrayAdapter(this,items);
         list.setAdapter(iaa);
     }
 

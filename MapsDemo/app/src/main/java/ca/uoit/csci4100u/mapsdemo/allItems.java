@@ -51,7 +51,7 @@ public class allItems extends AppCompatActivity
         ih.createItem("Sandwiches",2.3f,"Sandwiches types found inside");
         ih.createItem("Breakfast",2.3f,"Breakfast types found inside");
         ih.createItem("Cookies",2.3f,"Cookie types found inside");
-        ih.createOtherItem("Coffee","Defcafe",2.3f,0);
-        ih.createOtherItem("Coffee","Defca",2.3f,1);
+        ih.createOtherItem("Coffee","Defcafe",2.3f,"0");
+        ih.createOtherItem("Coffee","Defca",2.3f,"1");
     }
 }
