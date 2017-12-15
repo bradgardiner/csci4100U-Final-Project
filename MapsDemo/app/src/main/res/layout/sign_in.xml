@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="303dp"
-        app:srcCompat="@android:drawable/btn_star" />
+        android:src="@mipmap/icon" />
 
     <EditText
         android:id="@+id/user_name"
