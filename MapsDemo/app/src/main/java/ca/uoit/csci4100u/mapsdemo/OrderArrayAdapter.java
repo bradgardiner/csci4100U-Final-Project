@@ -38,7 +38,7 @@ public class OrderArrayAdapter extends ArrayAdapter<Order> {
         txtName.setText(order.getName());
 
         TextView txtPrice = (TextView)p.findViewById(R.id.txtPrice2);
-        txtPrice.setText(order.getPrice()+"");
+        txtPrice.setText(order.getLocation()+"");
 
         TextView txtDesc = (TextView)p.findViewById(R.id.txtDesc);
         txtDesc.setText(order.getOrder());
