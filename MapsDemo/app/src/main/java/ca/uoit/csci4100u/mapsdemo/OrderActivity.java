@@ -45,6 +45,8 @@ public class OrderActivity extends AppCompatActivity {
 
 
     public void computeOrder(View view){
+
+
         oh.deleteOrder(orderID);
         finish();
 

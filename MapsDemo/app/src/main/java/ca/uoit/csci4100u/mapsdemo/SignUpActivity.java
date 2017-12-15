@@ -59,6 +59,7 @@ public class SignUpActivity extends AppCompatActivity{
                 uh.createUser(username, email, password, "");
                 //launch main intent
                 Intent intent = new Intent(this, SearchActivity.class);
+                intent.putExtra("username",username);
                 startActivity(intent);
             }
             else{
