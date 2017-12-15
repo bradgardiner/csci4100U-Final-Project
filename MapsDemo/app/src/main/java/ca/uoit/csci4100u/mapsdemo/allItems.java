@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+//Shayne Taylor
 import java.util.ArrayList;
 
 import ca.uoit.csci4100u.mapsdemo.sampledata.Item;
@@ -15,9 +15,9 @@ import ca.uoit.csci4100u.mapsdemo.sampledata.ItemArrayAdapter;
 public class allItems extends AppCompatActivity
                         implements AdapterView.OnItemClickListener{
 
-    ItemHelper ih;
+    private ItemHelper ih;
     private ListView lItem;
-    ItemArrayAdapter ad;
+    private ItemArrayAdapter ad;
 
 
     @Override
@@ -27,7 +27,7 @@ public class allItems extends AppCompatActivity
         lItem = (ListView)findViewById(R.id.ItemsList);
 
         ih = new ItemHelper(this);
-        addItems();
+        //addItems();
         updateItemList();
         lItem.setOnItemClickListener(this);
     }

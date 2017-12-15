@@ -1,3 +1,4 @@
+//Shayne Taylor
 package ca.uoit.csci4100u.mapsdemo;
 
 import android.content.Intent;
@@ -93,8 +94,6 @@ public class SubItem extends AppCompatActivity
                 main.add(items.get(i));
             }
         }
-        //Item temp = new Item("name","dd",3.9f);
-        //items.add(temp);
         if (list == aView){
             order = ih.addOrderItem(main.get(pos));
             Toast toast= Toast.makeText(getApplicationContext(),main.get(pos).getName()+" added to order",Toast.LENGTH_SHORT);

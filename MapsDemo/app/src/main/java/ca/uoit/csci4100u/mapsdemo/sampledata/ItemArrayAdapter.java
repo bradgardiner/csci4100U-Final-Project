@@ -1,3 +1,4 @@
+//Shayne Taylor
 package ca.uoit.csci4100u.mapsdemo.sampledata;
 
 import android.content.Context;

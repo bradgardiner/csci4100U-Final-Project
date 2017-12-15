@@ -1,9 +1,14 @@
+//Shayne Taylor
 package ca.uoit.csci4100u.mapsdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -16,10 +21,11 @@ import ca.uoit.csci4100u.mapsdemo.sampledata.ItemArrayAdapter;
 public class Checkout extends AppCompatActivity {
 
     private List<Item> items;
-    private ListView lItems;
     private ItemHelper ih;
     private ItemArrayAdapter iaa;
     private Bundle bun;
+    private float price;
+    private String order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +34,27 @@ public class Checkout extends AppCompatActivity {
         Log.i("HEREK@K@@K","Starting Checkout");
         bun = new Bundle();
         ih = new ItemHelper(this);
-        lItems = (ListView) findViewById(R.id.itemList);
+        TextView txtItems = (TextView) findViewById(R.id.txtOrder);
+        TextView txtPrice = (TextView) findViewById(R.id.txtPrice);
         Log.i("HEJQKMSN","making arraylist");
-        updateList();
+        //u
+        items = ih.getOrderItems();
+        Log.i("ArraySize",items.size() + "");
+        for(int i =0;i <= items.size()-1;i++){
+            Item item = items.get(i);
+            Log.i("ArraySize",items.get(i).getName() + "");
+            order += item.getName() + "\n";
+            price += item.getPrice();
+        }
 
+        txtItems.setText(order);
+        txtPrice.setText(price + "");
     }
 
-    public void updateList(){
-        iaa = new ItemArrayAdapter(this,ih.getSubItems("Orders"));
-        lItems.setAdapter(iaa);
+    public void addOrder(View view){
+        orderHelper oh = new orderHelper(this);
+        oh.createOrder("user123",order,order,"location");
+        finish();
+        ih.dropTable("Order");
     }
 }

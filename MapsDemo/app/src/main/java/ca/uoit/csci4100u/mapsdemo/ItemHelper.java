@@ -1,3 +1,4 @@
+//Shayne Taylor
 package ca.uoit.csci4100u.mapsdemo;
 
 import android.content.ContentValues;
@@ -202,12 +203,42 @@ public class ItemHelper extends SQLiteOpenHelper{
         return item;
     }
 
+    public List<Item> getOrderItems(){
+        ArrayList<Item> items = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = new String[] {"name","price","option, _id"};
+        String where = "";
+        String[] whereArgs = new String[] {};
+        Cursor cursor = db.query("Orders",columns,where,whereArgs,"","","name");
+
+        cursor.moveToFirst();
+        do{
+            if(!cursor.isAfterLast()){
+                String name = cursor.getString(0);
+                float price = Float.parseFloat(cursor.getString(1));
+                int option = cursor.getInt(2);
+                Item temp = new Item(name,price,option);
+                items.add(temp);
+            }
+            cursor.moveToNext();
+        }while(!cursor.isAfterLast());
+        return items;
+    }
+
     public List<Item> addOrderItem(Item item){
         int option  =0;
         if (item.getOption()){
             option = 1;
         }
         createOtherItem("Orders",item.getName(),item.getPrice(),option);
-        return getSubItems("Orders");
+        return getOrderItems();
+    }
+
+    public void dropTable(String table){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE " + table);
+        db.execSQL(OrderCreate);
+
     }
 }
