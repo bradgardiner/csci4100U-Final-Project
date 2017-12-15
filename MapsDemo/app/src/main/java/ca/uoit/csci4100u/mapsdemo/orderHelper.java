@@ -25,7 +25,8 @@ public class orderHelper extends SQLiteOpenHelper {
     static final String OrderTable = "orderItems";
 
     static final String OrderCreate = "CREATE TABLE orderItems(\n" +
-            "\tusername TEXT PRIMARY KEY,\n" +
+            "\t_id integer primary key autoincrement,\n" +
+            "\tusername TEXT NOT NULL,\n" +
             "\tprice TEXT NOT NULL,\n" +
             "\tproducts TEXT NOT NULL, \n" +
             "\tlocation TEXT NOT NULL \n" +
@@ -70,7 +71,7 @@ public class orderHelper extends SQLiteOpenHelper {
         ArrayList<Order> orders = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = new String[] {"username","price","products","location"};
+        String[] columns = new String[] {"_id","username","price","products","location"};
         String where = "";
         String[] whereArgs = new String[] {};
         Cursor cursor = db.query(OrderTable,columns,where,whereArgs,"","","username");
@@ -106,10 +107,22 @@ public class orderHelper extends SQLiteOpenHelper {
         newVals.put("products", products);
         newVals.put("location", location);
 
-        long i = db.insert(OrderTable,null,newVals);
+        long id = db.insert(OrderTable,null,newVals);
+
+        order.setId(id);
 
         return order;
     }
+
+    public boolean deleteOrder(long id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int numRows = db.delete(OrderTable, "_id = ?", new String[] {"" + id});
+        return (numRows ==1);
+    }
+
+
+
 
     //use this every time someone adds something to the order, with the product name and price of the product
 //    public Order addToOrder(String product, int amount, float price)

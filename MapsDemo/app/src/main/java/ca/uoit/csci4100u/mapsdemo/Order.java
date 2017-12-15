@@ -9,11 +9,12 @@ public class Order {
     String price;
     String productNumbers;
     String location;
+    private long id;
 
     public Order(String username,String price, String products, String location){
         this.username = username;
         this.price = price;
-        this.productNumbers = productNumbers;
+        this.productNumbers = products;
         this.location = location;
     }
 
@@ -40,5 +41,12 @@ public class Order {
     public String getPrice(){return price;}
     public String getLocation() {return location;}
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
+    }
 
 }

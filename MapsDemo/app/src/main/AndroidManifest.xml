@@ -48,6 +48,7 @@
         <activity android:name=".AllOrders"></activity>
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".BecomeRunner"></activity>
+        <activity android:name=".OrderActivity"></activity>
 
     </application>
 

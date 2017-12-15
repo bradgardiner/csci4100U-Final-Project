@@ -39,7 +39,7 @@ public class AllOrders extends AppCompatActivity implements AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView aView, View source, int pos, long id){
-        Intent i = new Intent(this, SubItem.class);
+        Intent i = new Intent(this, OrderActivity.class);
         i.putExtra("item",pos);
         startActivity(i);
     }
