@@ -1,10 +1,13 @@
 package ca.uoit.csci4100u.mapsdemo.sampledata;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by shayne on 2017-12-10.
  */
 
-public class Item {
+public class Item implements Parcelable{
     String name;
     float price;
     String description;
@@ -23,6 +26,12 @@ public class Item {
         this.option = option;
     }
 
+    public Item(Parcel in)
+    {
+        name = in.readString();
+        price = in.readFloat();
+        option = in.readInt();
+    }
     public String getName(){return name;}
     public String getDescription(){
         if(description == ""){
@@ -33,6 +42,31 @@ public class Item {
     }
     public float getPrice(){return price;}
     public boolean getOption(){return (option == 1);}
+
+    @Override
+    public String toString(){
+        return name + ", " + price + "," + description;
+    }
+
+    public void writeToParcel(Parcel out, int flags){
+        out.writeString(name);
+        out.writeFloat(price);
+        out.writeString(description);
+        out.writeInt(option);
+    }
+
+    public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>(){
+        public Item createFromParcel(Parcel in){
+            return new Item(in);
+        }
+
+        public Item[] newArray(int size){
+            return new Item[size];
+        }
+
+    };
+
+    public int describeContents(){return 0;}
 
 }
 
