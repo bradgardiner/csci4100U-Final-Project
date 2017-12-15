@@ -235,9 +235,9 @@ public class ItemHelper extends SQLiteOpenHelper{
         return getOrderItems();
     }
 
-    public void dropTable(String table){
+    public void dropOrder(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DROP TABLE " + table);
+        db.execSQL("DROP TABLE Orders");
         db.execSQL(OrderCreate);
 
     }

@@ -55,6 +55,6 @@ public class Checkout extends AppCompatActivity {
         orderHelper oh = new orderHelper(this);
         oh.createOrder("user123",order,order,"location");
         finish();
-        ih.dropTable("Order");
+        ih.dropOrder();
     }
 }
