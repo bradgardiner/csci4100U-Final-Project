@@ -57,21 +57,29 @@ public class SignInActivity extends AppCompatActivity {
 
         User current = null;
 
+
         for (int i = 0; i < users.size(); i++){
-           if(users.get(i).getUsername() == username){
-               current = users.get(i);
-               break;
+            Log.i("Current user is: " ,  users.get(i).getUsername());
+            Log.i(users.get(i).getPassword() + " = = = = ",  password);
+
+            if(users.get(i).getUsername().equals(username)){
+               if(users.get(i).getPassword().equals(password)){
+                   Log.i("Password CORRECT:" , "**************");
+                   //Start main intent of application
+                   Intent intent = new Intent(this,SearchActivity.class);
+                   startActivity(intent);
+               }
+               else{
+                   Log.i("Password incorrect", "Please try again");
+
+
+               }
+
            }
         }
 
-        if(current.getPassword() != password){
-            Log.i("Password incorrect", "Please try again");
-        }
-        else{
-            //Start main intent of application
-            Intent intent = new Intent(this,MapsActivity.class);
-            startActivity(intent);
-        }
+
+
     }
 
 }

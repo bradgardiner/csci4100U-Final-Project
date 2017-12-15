@@ -16,16 +16,16 @@ import java.util.List;
 
 public class UserHelper extends SQLiteOpenHelper {
 
-    static final int DATABASE_VERSION = 2;
+    static final int DATABASE_VERSION = 3;
 
     static final String TABLE = "Users";
 
-    static final String CREATE_STATEMENT = "CREATE TABLE usersTable(\n" +
+    static final String CREATE_STATEMENT = "CREATE TABLE Users(\n" +
             "\t_id integer primary key autoincrement,\n" +
-            "\tusername TEXT NOT NULL,\n" +
-            "\temail TEXT NOT NULL,\n" +
-            "\tpassword TEXT NOT NULL, \n" +
-            "\trunner TEXT NOT NULL \n" +
+            "\tusername text not null,\n" +
+            "\temail text not null,\n" +
+            "\tpassword text not null, \n" +
+            "\trunner text not null\n" +
             ");";
 
 
@@ -78,7 +78,7 @@ public class UserHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] columns = new String[] {"_id", "username", "email", "password", "runner"};
+        String[] columns = new String[] {"id", "username", "email", "password", "runner"};
         String where = "username = ?";
         String[] whereArgs = new String[] {"" + id};
 

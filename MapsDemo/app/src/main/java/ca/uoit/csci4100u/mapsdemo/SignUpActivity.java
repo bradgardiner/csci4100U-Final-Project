@@ -55,10 +55,11 @@ public class SignUpActivity extends AppCompatActivity{
             Log.i("Username already exists" , "Try another.");
         }
         else{
-            if(password == confirmPass){
+            if(password.equals(confirmPass)){
                 uh.createUser(username, email, password, "");
                 //launch main intent
-                Intent intent = new Intent(this, MapsActivity.class);
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
             }
             else{
                 Log.i("Passwords dont match", "please try again");
