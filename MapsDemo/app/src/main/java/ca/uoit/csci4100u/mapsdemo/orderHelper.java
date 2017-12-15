@@ -49,8 +49,7 @@ public class orderHelper extends SQLiteOpenHelper {
 
 
     public orderHelper(Context context){
-        super(context, "menuItems", null,DATABASE_VERSION);
-    }
+        super(context, "orderItems", null,DATABASE_VERSION);    }
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(OrderCreate);
