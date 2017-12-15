@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class BecomeRunner extends Activity {
 
-    TextView txt = (TextView) findViewById(R.id.agreement);
+
 
 
     @Override
@@ -20,7 +20,7 @@ public class BecomeRunner extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.become_runner_activity);
         String data = getIntent().getStringExtra("DATA");
-
+        TextView txt = (TextView) findViewById(R.id.agreement);
         txt.setText(data);
 
     }
