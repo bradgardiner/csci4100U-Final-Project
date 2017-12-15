@@ -25,7 +25,7 @@
         android:layout_height="69dp"
         android:layout_marginBottom="20dp"
         android:onClick="checkOut"
-        android:text="Button"
+        android:text="@string/finalOrder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintLeft_toLeftOf="parent"
