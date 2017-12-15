@@ -79,7 +79,7 @@ public class orderHelper extends SQLiteOpenHelper {
         do{
             if(!cursor.isAfterLast()){
                 String name = cursor.getString(0);
-                float price = cursor.getFloat(1);
+                String price = cursor.getString(1);
                 String product = cursor.getString(2);
                 String location = cursor.getString(3);
                 Order temp = new Order(name,location,product,price);
@@ -91,46 +91,52 @@ public class orderHelper extends SQLiteOpenHelper {
     }
 
     //call this when the user click the start order button, including the username
-    public Order createOrder(String name){
-        Order order = new Order(name);
+    public Order createOrder(String name, String price, String products, String location){
+
+        Order order = new Order(name, price, products,location);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        /*ContentValues newVals = new ContentValues();
-        newVals.put("name","Coffee");
-        newVals.put("price","2.4");
-        newVals.put("desc","COFFEE");
-        long i = db.insert(OrderTable,null,newVals);*/
+
+
+
+        ContentValues newVals = new ContentValues();
+        newVals.put("username",name);
+        newVals.put("price",price);
+        newVals.put("products", products);
+        newVals.put("location", location);
+
+        long i = db.insert(OrderTable,null,newVals);
 
         return order;
     }
 
     //use this every time someone adds something to the order, with the product name and price of the product
-    public Order addToOrder(String product, int amount, float price)
-    {
-        //adds to the productnumbers string with product and amount, and then adds the price to the total price
-        order.addToOrder(product, amount, price);
-
-        return order;
-    }
+//    public Order addToOrder(String product, int amount, float price)
+//    {
+//        //adds to the productnumbers string with product and amount, and then adds the price to the total price
+//        order.addToOrder(product, amount, price);
+//
+//        return order;
+//    }
     //use this when user clicks finalize order
-    public Order finalizeOrder()
-    {
-
-        //add order to database here
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues newVals = new ContentValues();
-        newVals.put("username",order.getName());
-        newVals.put("price",order.getPrice());
-        newVals.put("products",order.getOrder());
-        newVals.put("location",order.getLocation());
-        long i = db.insert(OrderTable,null,newVals);
-
-        //in case you want the order for later
-        return order;
-    }
+//    public Order finalizeOrder()
+//    {
+//
+//        //add order to database here
+//
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        ContentValues newVals = new ContentValues();
+//        newVals.put("username",order.getName());
+//        newVals.put("price",order.getPrice());
+//        newVals.put("products",order.getOrder());
+//        newVals.put("location",order.getLocation());
+//        long i = db.insert(OrderTable,null,newVals);
+//
+//        //in case you want the order for later
+//        return order;
+//    }
 
     /*public List<Order> getSubItems(String table){
         List<Item> items = new ArrayList<>();

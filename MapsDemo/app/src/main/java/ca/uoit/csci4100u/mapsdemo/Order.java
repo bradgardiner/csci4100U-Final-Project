@@ -6,11 +6,11 @@ package ca.uoit.csci4100u.mapsdemo;
 
 public class Order {
     String username;
-    float price;
+    String price;
     String productNumbers;
     String location;
 
-    public Order(String username, String location, String productNumbers, float price){
+    public Order(String username,String price, String products, String location){
         this.username = username;
         this.price = price;
         this.productNumbers = productNumbers;
@@ -19,7 +19,7 @@ public class Order {
 
     public Order(String username){
         this.username = username;
-        this.price = 0;
+        this.price = "0";
         this.productNumbers = "";
         this.location = "";
     }
@@ -37,7 +37,7 @@ public class Order {
 
     public String getName(){return username;}
     public String getOrder(){return productNumbers;}
-    public float getPrice(){return price;}
+    public String getPrice(){return price;}
     public String getLocation() {return location;}
 
 
