@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public class orderHelper extends SQLiteOpenHelper {
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 11;
 
     private orderHelper oh;
     private Order order;

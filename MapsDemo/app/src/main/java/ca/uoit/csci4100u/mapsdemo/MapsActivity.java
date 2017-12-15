@@ -5,7 +5,10 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -24,6 +27,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double latitude, longitude;
     private String locationName;
 
+    FloatingActionMenu mainMenu;
+    FloatingActionButton order, become_run, runner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        mainMenu = (FloatingActionMenu) findViewById(R.id.main_menu);
+        order = (FloatingActionButton) findViewById(R.id.order);
+        become_run = (FloatingActionButton) findViewById(R.id.become_run);
+        runner = (FloatingActionButton) findViewById(R.id.runner);
+
 
 
         // here I do *not* have a map
@@ -97,4 +109,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
     }
+
+    public void order(View view){
+        Intent intent = new Intent(this, allItems.class);
+        startActivity(intent);
+    }
+
+    public void runner(View view){
+        Intent intent = new Intent(this, AllOrders.class);
+        startActivity(intent);
+    }
+
+    public void become_run(View view){
+        Intent intent = new Intent(this, BecomeRunner.class);
+        startActivity(intent);
+    }
+
+
 }
