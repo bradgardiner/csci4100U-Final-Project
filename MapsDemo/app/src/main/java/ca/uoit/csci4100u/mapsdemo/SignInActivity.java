@@ -21,6 +21,7 @@ import java.util.List;
 public class SignInActivity extends AppCompatActivity {
 
     UserHelper uh;
+    String username;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class SignInActivity extends AppCompatActivity {
 
          uh = new UserHelper(this);
 
-         uh.createUser("admin", "bradgardiner21@gmail.com", "admin", "run" );
+         //uh.createUser("admin", "bradgardiner21@gmail.com", "admin", "run" );
 
 
 
@@ -38,6 +39,7 @@ public class SignInActivity extends AppCompatActivity {
     public void launch_sign_up(View view){
         //go to sign up view
         Intent intent = new Intent(this,SignUpActivity.class);
+
         startActivity(intent);
     }
 
@@ -49,7 +51,7 @@ public class SignInActivity extends AppCompatActivity {
         EditText userText = (EditText) findViewById(R.id.user_name);
         EditText passwordText = (EditText) findViewById(R.id.user_password);
 
-        String username = userText.getText().toString();
+        username = userText.getText().toString();
         String password = passwordText.getText().toString();
 
         List<User> users = new ArrayList<>();
@@ -67,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
                    Log.i("Password CORRECT:" , "**************");
                    //Start main intent of application
                    Intent intent = new Intent(this,SearchActivity.class);
+                   intent.putExtra("username",username);
                    startActivity(intent);
                }
                else{

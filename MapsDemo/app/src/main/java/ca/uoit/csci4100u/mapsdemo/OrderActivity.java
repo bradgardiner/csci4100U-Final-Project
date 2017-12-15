@@ -2,6 +2,7 @@ package ca.uoit.csci4100u.mapsdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,10 +26,12 @@ public class OrderActivity extends AppCompatActivity {
         List<Order> orders = oh.getOrders();
 
         int data = getIntent().getIntExtra("item", 0);
+        Log.i("DATA is " , "" + data);
 
         Order order = null;
         order = orders.get(data);
         orderID = order.getId();
+        Log.i("Order ID is -> ", "" + orderID);
 
         TextView name = (TextView) findViewById(R.id.txtName2);
         TextView price = (TextView) findViewById(R.id.txtPrice2);
@@ -45,6 +48,7 @@ public class OrderActivity extends AppCompatActivity {
 
 
     public void computeOrder(View view){
+
         oh.deleteOrder(orderID);
         finish();
 

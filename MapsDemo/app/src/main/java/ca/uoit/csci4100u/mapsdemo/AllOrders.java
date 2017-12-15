@@ -45,7 +45,7 @@ public class AllOrders extends AppCompatActivity implements AdapterView.OnItemCl
     }
 
     public void addOrder() {
-        oh.createOrder("Brad", "7.77", "Turkey Bacon Club", "UA 3220");
+       // oh.createOrder("Brad", "7.77", "Turkey Bacon Club", "UA 3220");
         //oh.addToOrder("Green Tea", 1, 2.9f);
        // oh.finalizeOrder();
     }
