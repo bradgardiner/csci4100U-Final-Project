@@ -91,8 +91,9 @@ public class orderHelper extends SQLiteOpenHelper {
         return orders;
     }
 
-    public Order createOrder(String name, String location){
-        Order order = new Order(name,location);
+    //call this when the user click the start order button, including the username
+    public Order createOrder(String name){
+        Order order = new Order(name);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -105,23 +106,30 @@ public class orderHelper extends SQLiteOpenHelper {
         return order;
     }
 
+    //use this every time someone adds something to the order, with the product name and price of the product
     public Order addToOrder(String product, int amount, float price)
     {
+        //adds to the productnumbers string with product and amount, and then adds the price to the total price
         order.addToOrder(product, amount, price);
 
         return order;
     }
-
+    //use this when user clicks finalize order
     public Order finalizeOrder()
     {
 
-        //add order to database here?
-        /*ContentValues newVals = new ContentValues();
-        newVals.put("name","Coffee");
-        newVals.put("price","2.4");
-        newVals.put("desc","COFFEE");
-        long i = db.insert(OrderTable,null,newVals);*/
+        //add order to database here
 
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues newVals = new ContentValues();
+        newVals.put("username",order.getName());
+        newVals.put("price",order.getPrice());
+        newVals.put("products",order.getOrder());
+        newVals.put("location",order.getLocation());
+        long i = db.insert(OrderTable,null,newVals);
+        
+        //in case you want the order for later
         return order;
     }
 

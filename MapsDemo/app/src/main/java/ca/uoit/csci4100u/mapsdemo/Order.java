@@ -17,16 +17,16 @@ public class Order {
         this.location = location;
     }
 
-    public Order(String username, String location){
+    public Order(String username){
         this.username = username;
         this.price = 0;
         this.productNumbers = "";
-        this.location = location;
+        this.location = "";
     }
 
     public void addToOrder(String product, int amount, float price)
     {
-        this.productNumbers += product + " " + amount + ", ";
+        this.productNumbers += product + " " + amount + "\n";
         this.price += price;
     }
 
