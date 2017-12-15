@@ -21,4 +21,6 @@
     <string name="become_runner">Become a Runner</string>
     <string name="main_menu">Main Menu</string>
     <string name="accept_terms">Accept Terms</string>
+    <string name="loading">Loading</string>
+    <string name="debug">Debug</string>
 </resources>
