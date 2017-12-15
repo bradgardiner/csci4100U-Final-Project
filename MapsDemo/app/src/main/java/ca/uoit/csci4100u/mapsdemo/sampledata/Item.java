@@ -8,15 +8,15 @@ public class Item {
     String name;
     float price;
     String description;
-    String option;
+    int option;
 
     public Item(String name, String description, float price){
         this.description = description;
         this.name = name;
         this.price = price;
-        option = "0";
+        option = 0;
     }
-    public Item(String name, float price,String option){
+    public Item(String name, float price,int option){
         this.name = name;
         this.price = price;
         description = "";
@@ -32,7 +32,7 @@ public class Item {
         }
     }
     public float getPrice(){return price;}
-    public boolean getOption(){return (option.equals("1"));}
+    public boolean getOption(){return (option == 1);}
 
 }
 
