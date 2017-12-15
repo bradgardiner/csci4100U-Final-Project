@@ -16,4 +16,5 @@
     <string name="confirm_password">confirm password</string>
     <string name="options">Options</string>
     <string name="accept_order">Accept Order</string>
+    <string name="location">Location:</string>
 </resources>

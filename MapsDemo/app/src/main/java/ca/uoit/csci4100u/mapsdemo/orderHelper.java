@@ -128,7 +128,7 @@ public class orderHelper extends SQLiteOpenHelper {
         newVals.put("products",order.getOrder());
         newVals.put("location",order.getLocation());
         long i = db.insert(OrderTable,null,newVals);
-        
+
         //in case you want the order for later
         return order;
     }

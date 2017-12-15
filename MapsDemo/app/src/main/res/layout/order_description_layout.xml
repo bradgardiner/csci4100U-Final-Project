@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -36,6 +35,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
+        android:id="@+id/txtL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="@string/location"
+        app:layout_constraintStart_toStartOf="@+id/txtD"
+        app:layout_constraintTop_toBottomOf="@+id/txtD" />
+
+    <TextView
         android:id="@+id/txtName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,6 +69,15 @@
         android:layout_marginTop="7dp"
         app:layout_constraintStart_toEndOf="@+id/txtD"
         app:layout_constraintTop_toBottomOf="@+id/txtPrice2" />
+
+    <TextView
+        android:id="@+id/txtLoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toEndOf="@+id/txtL"
+        app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
 
     <Button
         android:id="@+id/button2"
